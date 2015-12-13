@@ -142,6 +142,7 @@ button:focus {outline:0;}
 
 .answer-choice-wrapper label {
 	min-height: 55px;
+	transition: background-color 0.1s ease-out;
 }
 
 .answer-choice-wrapper label:hover {
