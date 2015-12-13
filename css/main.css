@@ -8,25 +8,37 @@ body {
 	display: flex;
 	justify-content: center;
 	padding-bottom: 10px;
-	font-family: 'Raleway';
 }
 
 #main-menu button {
 	width: 40%;
+	height: 45px;
+	font-weight: 700;
 	align-self: center;
 	margin: 5px;
-	border-radius: 5px;
-	font-size: 1.25em;
+	border-radius: 25px;
+	font-size: 1em;
 	color: #222222;
 	background-color: #F4F4F4;
+	border: 1px solid rgba(0, 0, 0, 0.23);
+	transition: background-color 0.2s ease,
+				color 0.1s ease;
 }
 
 #start-survey:hover {
 	background-color: #31d434;
 }
 
+#start-survey:active {
+	background-color: #30b933;
+}
+
 #take-survey:hover {
 	background-color: #fa5b5d;
+}
+
+#take-survey:active {
+	background-color: #df5557;
 }
 
 #start-survey:hover,
