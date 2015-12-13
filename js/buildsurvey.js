@@ -43,8 +43,15 @@ $(document).ready(function(){
         questionNum++;
     };
 
-    $appendNextQuestion("Test 3", ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]);
+    //Prints the survey to the DOM
+    var printSurveytoDOM = function(s){
+        for (var i = 0; i < s.survey.length; i++){
+            $appendNextQuestion(s.survey[i].getQuestion(), s.survey[i].getAnswerChoices());
+            console.log("Test...");
+        }
+    };
 
+    printSurveytoDOM(Survey);
 
 });
 

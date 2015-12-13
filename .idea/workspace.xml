@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abf28547-c80b-46ba-be76-a2366c3c0208" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/buildsurvey.js" afterPath="$PROJECT_DIR$/js/buildsurvey.js" />
     </list>
     <ignored path="Project Files.iws" />
@@ -37,13 +36,13 @@
       <file leaf-file-name="buildsurvey.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/buildsurvey.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5147059">
-              <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.31862745">
+              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
               <folding>
-                <element signature="e#1602#1616#0" expanded="false" />
-                <element signature="e#2602#2730#0" expanded="false" />
-                <element signature="e#2803#2873#0" expanded="false" />
-                <element signature="e#2876#2920#0" expanded="false" />
+                <element signature="e#1795#1809#0" expanded="false" />
+                <element signature="e#2795#2923#0" expanded="false" />
+                <element signature="e#2996#3066#0" expanded="false" />
+                <element signature="e#3069#3113#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -177,13 +176,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/buildsurvey.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5147059">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.31862745">
+          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
           <folding>
-            <element signature="e#1602#1616#0" expanded="false" />
-            <element signature="e#2602#2730#0" expanded="false" />
-            <element signature="e#2803#2873#0" expanded="false" />
-            <element signature="e#2876#2920#0" expanded="false" />
+            <element signature="e#1795#1809#0" expanded="false" />
+            <element signature="e#2795#2923#0" expanded="false" />
+            <element signature="e#2996#3066#0" expanded="false" />
+            <element signature="e#3069#3113#0" expanded="false" />
           </folding>
         </state>
       </provider>
