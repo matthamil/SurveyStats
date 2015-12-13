@@ -133,15 +133,18 @@ button:focus {outline:0;}
 	font-size: 0.6em;
 	font-weight: 700;
 	background-color: #727272;
-	color: #FFF;
 	align-self: center;
+	color: #FFF;
 	margin: 5px;
 	padding: 5px;
 	border: none;
 }
 
+.answer-choice-wrapper label {
+	min-height: 55px;
+}
+
 .answer-choice-wrapper label:hover {
 	background-color: #0498FF;
-	border-radius: 20px;
 }
 
