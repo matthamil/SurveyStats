@@ -43,6 +43,10 @@ a, a:hover {
 	border-radius: 7px;
 }
 
+hr {
+	width: 75%;
+}
+
 .question-instructions {
 	font-size: 1em;
 	margin-top: 20px;
