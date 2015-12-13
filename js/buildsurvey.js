@@ -1,57 +1,6 @@
 $(document).ready(function(){
-    //Cache of div #survey-body
-    var $s = $("#survey-body");
 
-    //Holds the current question number
-    var questionNum = 1;
-
-    //Appends the Question Number to div #survey-body
-    var $appendQuestionNum = function(){
-        $s.append("<div class='question-header'>" + questionNum + ".</div>");
-    };
-
-    //Appends the Question to the Survey
-    var $appendQBody = function(qText, qAnswers){
-        $s.append("<div class='question-body'><p>" + qText + "</p>");
-        $appendQAnswers(qAnswers);
-    };
-
-    //Appends the answers to the question just added
-    var $appendQAnswers = function(questionAnswers){
-        //Appends div .answer-choice-wrapper
-        $(".question-body").last().append("<div class='answer-choice-wrapper'>");
-
-        //Cache of the appended div
-        var $aForm = $(".answer-choice-wrapper").last();
-
-        //Appends a radio button for each possible answer
-        var radioButton = function(qA){
-            return "<label class='answer-choice'>" +
-            "<input type='radio' name="+"q"+questionNum+
-            " value="+questionNum+">" + qA + "</label>";
-        };
-
-        for (var i = 0; i < questionAnswers.length; i++){
-            $aForm.append(radioButton(questionAnswers[i]));
-        }
-    };
-
-    //Adds the next question to the survey
-    var $appendNextQuestion = function(qText, qAnswers){
-        $appendQuestionNum();
-        $appendQBody(qText, qAnswers);
-        questionNum++;
-    };
-
-    //Prints the survey to the DOM
-    var printSurveytoDOM = function(s){
-        for (var i = 0; i < s.survey.length; i++){
-            $appendNextQuestion(s.survey[i].getQuestion(), s.survey[i].getAnswerChoices());
-            console.log("Test...");
-        }
-    };
-
-    printSurveytoDOM(Survey);
+    $fakeDataPull();
 
 });
 
@@ -132,7 +81,72 @@ var created_survey = [["USM offers a wide variety of courses.", "Likert"], ["USM
 
 Survey.addQuestions(created_survey);
 
-Survey.printQuestionTypes();
-console.log();
-Survey.printSurvey();
+//-----------------
+//DOM Manipulation
+//-----------------
 
+//Cache of div #survey-body
+var $s = $("#survey-body");
+
+//Holds the current question number
+var questionNum = 1;
+
+//Appends the Question Number to div #survey-body
+var $appendQuestionNum = function(){
+    $s.append("<div class='question-header'>" + questionNum + ".</div>");
+};
+
+//Appends the Question to the Survey
+var $appendQBody = function(qText, qAnswers){
+    $s.append("<div class='question-body'><p>" + qText + "</p>");
+    $appendQAnswers(qAnswers);
+};
+
+//Appends the answers to the question just added
+var $appendQAnswers = function(questionAnswers){
+    //Appends div .answer-choice-wrapper
+    $(".question-body").last().append("<div class='answer-choice-wrapper'>");
+
+    //Cache of the appended div
+    var $aForm = $(".answer-choice-wrapper").last();
+
+    //Appends a radio button for each possible answer
+    var radioButton = function(qA){
+        return "<label class='answer-choice'>" +
+            "<input type='radio' name="+"q"+questionNum+
+            " value="+questionNum+">" + qA + "</label>";
+    };
+
+    for (var i = 0; i < questionAnswers.length; i++){
+        $aForm.append(radioButton(questionAnswers[i]));
+    }
+};
+
+//Adds the next question to the survey
+var $appendNextQuestion = function(qText, qAnswers){
+    $appendQuestionNum();
+    $appendQBody(qText, qAnswers);
+    questionNum++;
+};
+
+//Prints the survey to the DOM
+var printSurveytoDOM = function(s){
+    for (var i = 0; i < s.survey.length; i++){
+        $appendNextQuestion(s.survey[i].getQuestion(), s.survey[i].getAnswerChoices());
+    }
+};
+
+//Simulates querying the DB for a survey
+var $fakeDataPull = function(){
+    $("#take-survey").click(function(){
+        //Removes the Main Menu
+        $("#main-menu").remove();
+        //Appends "Fetching"
+        $s.append("<p id='fetching' style='text-align:center'>Fetching survey...</p>");
+        //Artificial delay to simulate querying the server
+        setTimeout(function() {
+            $("#fetching").remove();
+            printSurveytoDOM(Survey);
+        }, 1000);
+    });
+};

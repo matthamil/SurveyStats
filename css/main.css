@@ -3,9 +3,41 @@ body {
 	font-family: 'Open Sans';
 }
 
+#main-menu {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 10px;
+	font-family: 'Raleway';
+}
+
+#main-menu button {
+	width: 40%;
+	align-self: center;
+	margin: 5px;
+	border-radius: 5px;
+	font-size: 1.25em;
+	color: #222222;
+	background-color: #F4F4F4;
+}
+
+#start-survey:hover {
+	background-color: #31d434;
+}
+
+#take-survey:hover {
+	background-color: #fa5b5d;
+}
+
+#start-survey:hover,
+#take-survey:hover {
+	color: #FFF;
+}
+
 #survey-body {
 	background-color: #FFF;
 	width: 80%;
+	max-width: 720px;
 	height: 100%;
 	margin-top: 20px;
 	padding: 0 20px 10px 20px;
