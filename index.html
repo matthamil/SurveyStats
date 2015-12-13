@@ -9,6 +9,9 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:800' rel='stylesheet' type='text/css'>
     <!-- Main.css -->
     <link href="css/main.css" rel="stylesheet">
 
@@ -22,10 +25,26 @@
   <body>
     <div id="wrapper">
       <div id="survey-body">
-        <h1>SurveyStats.js</h1>
-        <div id="description">This survey tool was created by Matt Hamil. SurveyStats.js was written using an OLOO design pattern (created by Kyle Simpson.</div>
-      </div>
-    </div>
+        <div id="title">
+          <h1>SurveyStats.js</h1>
+          <h2>Created by <a href="github.com/matthamil/">Matt Hamil</a></h2>
+        </div>
+        <div id="description">This survey tool was created by Matt Hamil. SurveyStats.js was written using an OLOO design pattern (created by Kyle Simpson).</div>
+        <hr>
+        <div class="question-instructions"><strong>Instructions:</strong> Please select the phrase that reflects your <strong>agreement with the following statements.</strong></div>
+        <div class="question-header">1.</div>
+        <div class="question-body">
+          <p>The University of Southern Mississippi Hattiesburg campus makes me feel at home.</p>
+          <div class="answer-choice-wrapper">
+            <button class="answer-choice">Strongly Disagree</button>
+            <button class="answer-choice">Disagree</button>
+            <button class="answer-choice">Neutral</button>
+            <button class="answer-choice">Agree</button>
+            <button class="answer-choice">Strongly Agree</button>
+          </div><!--answer-choice-wrapper-->
+        </div><!--question-body-->
+        </div><!--survey-body-->
+      </div><!--wrapper-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

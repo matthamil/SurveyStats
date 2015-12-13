@@ -1,5 +1,6 @@
 body {
-	background-color: #DDD;
+	background-color: #2D2D2D;
+	font-family: 'Open Sans';
 }
 
 #survey-body {
@@ -14,12 +15,92 @@ body {
 
 #survey-body h1 {
 	text-align: center;
-	padding-top: 10px;
+	padding-top: 20px;
+	letter-spacing: 2px;
+	color: #212121;
+	font-family: 'Raleway';
+}
+
+#survey-body h2 {
+	text-align: center;
+	font-size: 1em;
+	color: #212121;
+}
+
+a, a:hover {
+	color: #0288D1;
 }
 
 #description {
 	margin: 0 auto;
-	background-color: #DDD;
+	background-color: #F4F4F4;
+	color: #2F2F2F;
 	padding: 10px;
 	border-radius: 7px;
+}
+
+.question-instructions {
+	font-size: 1em;
+	margin-top: 20px;
+}
+
+.question-header {
+	font-size: 0.75em;
+	padding-left: 10px;
+	margin-top: 20px;
+	margin-bottom: 2px;
+	color: #212121;
+}
+
+.question-body {
+	background-color: #F4F4F4;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+
+.question-body > p {
+	padding: 10px;
+}
+
+button:focus {outline:0;}
+
+.answer-choice-wrapper {
+	text-align: center;
+	width: 100%;
+	background-color: #727272;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	border-radius: 0 0 5px 5px;
+	box-shadow: inset 0 1px 2px #000;
+}
+
+.answer-choice {
+	width: 17.5%;
+	height: 30px;
+	font-size: 0.5em;
+	font-weight: 700;
+	background-color: #727272;
+	color: #FFF;
+	align-self: center;
+	margin: 5px;
+	border: none;
+}
+
+.answer-choice:hover {
+	background-color: #0498FF;
+	border-radius: 20px;
+}
+
+.answer-choice:active {
+	background-color: #016DBA;
+	color: #FFF;
+	border-radius: 20px;
+}
+
+.selected {
+	background-color: #0498FF;
+	color: #FFF;
+	border: 2px solid #F4F4F4;
+	border-radius: 20px;
 }
