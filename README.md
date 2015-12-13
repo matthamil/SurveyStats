@@ -2,4 +2,4 @@
 
 ####OOLO Design Pattern
 
-Preview: https://htmlpreview.github.io/?http://github.com/matthamil/SurveyStats/blob/master/index.html
+Preview: https://matthamil.github.io/SurveyStats/
