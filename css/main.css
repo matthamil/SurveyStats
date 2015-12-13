@@ -21,6 +21,10 @@ body {
 	font-family: 'Raleway';
 }
 
+#survey-body h1 span {
+	color: #0498FF;
+}
+
 #survey-body h2 {
 	text-align: center;
 	font-size: 1em;
