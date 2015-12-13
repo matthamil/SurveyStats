@@ -1,9 +1,51 @@
 $(document).ready(function(){
-	var answerChoices = "<label class='answer-choice'><input type='radio' name='q1' value='1'>Strongly Disagree</label>"
-	var answerChoiceWrapper = "<form class='answer-choice-wrapper'>" + answerChoices + "</form>"
-	$("#survey-body").append("<div class='question-instructions'>Instructions: Add instructions here.</div>");
-	$("#survey-body").append("<div class='question-header'>#.</div>");
-	$("#survey-body").append("<div class='question-body'><p>Question text.</p>" + answerChoiceWrapper + "</div>");
+    //Cache of div #survey-body
+    var $s = $("#survey-body");
+
+    //Holds the current question number
+    var questionNum = 1;
+
+    //Appends the Question Number to div #survey-body
+    var $appendQuestionNum = function(){
+        $s.append("<div class='question-header'>" + questionNum + ".</div>");
+    };
+
+    //Appends the Question to the Survey
+    var $appendQBody = function(qText, qAnswers){
+        $s.append("<div class='question-body'><p>" + qText + "</p>");
+        $appendQAnswers(qAnswers);
+    };
+
+    //Appends the answers to the question just added
+    var $appendQAnswers = function(questionAnswers){
+        //Appends div .answer-choice-wrapper
+        $(".question-body").last().append("<div class='answer-choice-wrapper'>");
+
+        //Cache of the appended div
+        var $aForm = $(".answer-choice-wrapper").last();
+
+        //Appends a radio button for each possible answer
+        var radioButton = function(qA){
+            return "<label class='answer-choice'>" +
+            "<input type='radio' name="+"q"+questionNum+
+            " value="+questionNum+">" + qA + "</label>";
+        };
+
+        for (var i = 0; i < questionAnswers.length; i++){
+            $aForm.append(radioButton(questionAnswers[i]));
+        }
+    };
+
+    //Adds the next question to the survey
+    var $appendNextQuestion = function(qText, qAnswers){
+        $appendQuestionNum();
+        $appendQBody(qText, qAnswers);
+        questionNum++;
+    };
+
+    $appendNextQuestion("Test 3", ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]);
+
+
 });
 
 // OLOO Design
