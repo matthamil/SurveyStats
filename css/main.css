@@ -76,39 +76,28 @@ button:focus {outline:0;}
 	text-align: center;
 	width: 100%;
 	background-color: #727272;
-	height: 40px;
+	height: 60px;
 	display: flex;
 	justify-content: center;
 	border-radius: 0 0 5px 5px;
 	box-shadow: inset 0 1px 2px #000;
 }
 
-.answer-choice {
+.answer-choice-wrapper label,
+.answer-choice-wrapper input {
 	width: 17.5%;
-	height: 30px;
-	font-size: 0.5em;
+	font-size: 0.6em;
 	font-weight: 700;
 	background-color: #727272;
 	color: #FFF;
 	align-self: center;
 	margin: 5px;
+	padding: 5px;
 	border: none;
 }
 
-.answer-choice:hover {
+.answer-choice-wrapper label:hover {
 	background-color: #0498FF;
 	border-radius: 20px;
 }
 
-.answer-choice:active {
-	background-color: #016DBA;
-	color: #FFF;
-	border-radius: 20px;
-}
-
-.selected {
-	background-color: #0498FF;
-	color: #FFF;
-	border: 2px solid #F4F4F4;
-	border-radius: 20px;
-}

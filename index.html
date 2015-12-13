@@ -38,13 +38,13 @@
         <div class="question-header">1.</div>
         <div class="question-body">
           <p>The University of Southern Mississippi Hattiesburg campus makes me feel at home.</p>
-          <div class="answer-choice-wrapper">
-            <button class="answer-choice">Strongly Disagree</button>
-            <button class="answer-choice">Disagree</button>
-            <button class="answer-choice">Neutral</button>
-            <button class="answer-choice">Agree</button>
-            <button class="answer-choice">Strongly Agree</button>
-          </div><!--answer-choice-wrapper-->
+            <form class="answer-choice-wrapper">
+              <label class="answer-choice"><input type="radio" name="q1" value="1">Strongly Disagree</label>
+              <label class="answer-choice"><input type="radio" name="q1" value="2">Disagree</label>
+              <label class="answer-choice"><input type="radio" name="q1" value="3">Neutral</label>
+              <label class="answer-choice"><input type="radio" name="q1" value="4">Agree</label>
+              <label class="answer-choice"><input type="radio" name="q1" value="5">Strongly Agree</label>
+            </form><!--answer-choice-wrapper-->
         </div><!--question-body-->
         </div><!--survey-body-->
       </div><!--wrapper-->
@@ -52,5 +52,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/buildsurvey.js"></script>
   </body>
 </html>
