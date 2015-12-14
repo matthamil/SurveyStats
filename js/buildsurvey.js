@@ -1,7 +1,5 @@
 $(document).ready(function(){
-
-    $fakeDataPull();
-
+    app.init();
 });
 
 // OLOO Design
@@ -85,68 +83,75 @@ Survey.addQuestions(created_survey);
 //DOM Manipulation
 //-----------------
 
-//Cache of div #survey-body
-var $s = $("#survey-body");
+var app = {
+    questionNum: null,
+    init: function(){
+        this.questionNum = 1;
+        this.$fakeTakeSurvey();
+    },
+    $appendQuestionNum: function(){
+        $("#survey-body").append("<div class='question-header'>" + this.questionNum + ".</div>").bind(app);
+    },
+    $appendQBody: function(qText, qAnswers){
+        $("#survey-body").append("<div class='question-body'><p>" + qText + "</p>");
+        this.$appendQAnswers(qAnswers);
+    },
+    $appendQAnswers: function(questionAnswers){
+        //Appends div .answer-choice-wrapper
+        $(".question-body").last().append("<div class='answer-choice-wrapper'>");
 
-//Holds the current question number
-var questionNum = 1;
+        //Cache of the appended div
+        var $aForm = $(".answer-choice-wrapper").last();
 
-//Appends the Question Number to div #survey-body
-var $appendQuestionNum = function(){
-    $s.append("<div class='question-header'>" + questionNum + ".</div>");
-};
+        //Appends a radio button for each possible answer
+        var radioButton = function(qA, num){
+            return "<label class='answer-choice'>" +
+                "<input type='radio' name="+"q"+app.questionNum+
+                " value="+num+">" + qA + "</label>";
+        };
 
-//Appends the Question to the Survey
-var $appendQBody = function(qText, qAnswers){
-    $s.append("<div class='question-body'><p>" + qText + "</p>");
-    $appendQAnswers(qAnswers);
-};
-
-//Appends the answers to the question just added
-var $appendQAnswers = function(questionAnswers){
-    //Appends div .answer-choice-wrapper
-    $(".question-body").last().append("<div class='answer-choice-wrapper'>");
-
-    //Cache of the appended div
-    var $aForm = $(".answer-choice-wrapper").last();
-
-    //Appends a radio button for each possible answer
-    var radioButton = function(qA){
-        return "<label class='answer-choice'>" +
-            "<input type='radio' name="+"q"+questionNum+
-            " value="+questionNum+">" + qA + "</label>";
-    };
-
-    for (var i = 0; i < questionAnswers.length; i++){
-        $aForm.append(radioButton(questionAnswers[i]));
+        for (var i = 0; i < questionAnswers.length; i++){
+            $aForm.append(radioButton(questionAnswers[i], i+1));
+        }
+    },
+    $appendNextQuestion: function(qText, qAnswers){
+        this.$appendQuestionNum();
+        this.$appendQBody(qText, qAnswers);
+        this.questionNum++;
+    },
+    printSurveytoDOM: function(s){
+        for (var i = 0; i < s.survey.length; i++)
+            this.$appendNextQuestion(s.survey[i].getQuestion(), s.survey[i].getAnswerChoices());
+    },
+    $fakeTakeSurvey: function(){
+        $("#take-survey").click(function(){
+            //Removes the Main Menu
+            $("#main-menu").remove();
+            //Appends "Fetching"
+            $("#survey-body").append("<p id='fetching' style='text-align:center'>Fetching survey...</p>");
+            //Artificial delay to simulate querying the server
+            setTimeout(function() {
+                $("#fetching").remove();
+                this.printSurveytoDOM(Survey);
+            }.bind(app), 1000);
+        });
     }
 };
 
-//Adds the next question to the survey
-var $appendNextQuestion = function(qText, qAnswers){
-    $appendQuestionNum();
-    $appendQBody(qText, qAnswers);
-    questionNum++;
-};
-
-//Prints the survey to the DOM
-var printSurveytoDOM = function(s){
-    for (var i = 0; i < s.survey.length; i++){
-        $appendNextQuestion(s.survey[i].getQuestion(), s.survey[i].getAnswerChoices());
-    }
-};
-
-//Simulates querying the DB for a survey
-var $fakeDataPull = function(){
-    $("#take-survey").click(function(){
-        //Removes the Main Menu
-        $("#main-menu").remove();
-        //Appends "Fetching"
-        $s.append("<p id='fetching' style='text-align:center'>Fetching survey...</p>");
-        //Artificial delay to simulate querying the server
-        setTimeout(function() {
-            $("#fetching").remove();
-            printSurveytoDOM(Survey);
-        }, 1000);
+var $createSurvey = function(){
+    $("#start-survey").click(function(){
+       $mainmenu.remove();
     });
+};
+
+var $goBack = function() {
+    $("#go-back").click(function(){
+
+    });
+};
+
+var $mainMenuOptions = function(){
+    $createSurvey();
+    $fakeTakeSurvey();
+    $goBack();
 };

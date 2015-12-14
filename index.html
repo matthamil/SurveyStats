@@ -53,6 +53,20 @@
           <button id="start-survey"><i class="fa fa-pencil"></i> Create a Survey</button>
           <button id="take-survey"><i class="fa fa-clipboard"></i> Take a Survey</button>
         </div>
+        <div id="create-survey">
+          <button id="go-back">Back</button>
+          <h2>Survey Builder</h2>
+          <form class="survey-builder">
+            <div class="question-create-wrapper">
+              <input class="question-create-textinput" type="text" name="q1" placeholder="Type a question here.">
+              <label class="question-type-selector"><input type="radio" name="q1" value="1">Likert</label>
+              <label class="question-type-selector"><input type="radio" name="q1" value="2">Yes/No</label>
+              <button class="del-question-builder">Delete</button>
+            </div>
+          </form>
+          <button class="add-question-builder">Add Question</button>
+          <button id="submit-question-builder">Submit</button>
+        </div>
         </div><!--survey-body-->
       </div><!--wrapper-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -57,7 +57,8 @@ body {
 	border-radius: 7px;
 }
 
-#survey-body h1 {
+#survey-body h1,
+#create-survey h2 {
 	text-align: center;
 	padding-top: 20px;
 	letter-spacing: 2px;
@@ -147,5 +148,24 @@ button:focus {outline:0;}
 
 .answer-choice-wrapper label:hover {
 	background-color: #0498FF;
+}
+
+/*
+Survey Builder
+*/
+
+#create-survey h2 {
+	font-size: 2em;
+}
+
+.survey-builder {
+	margin: 0 auto;
+	padding: 20px;
+	border-radius: 7px;
+	background-color: #e6e6e6;
+}
+
+.survey-builder input {
+	width: 60%;
 }
 
