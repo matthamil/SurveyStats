@@ -57,8 +57,7 @@ body {
 	border-radius: 7px;
 }
 
-#survey-body h1,
-#create-survey h2 {
+#survey-body h1 {
 	text-align: center;
 	padding-top: 20px;
 	letter-spacing: 2px;
@@ -156,6 +155,9 @@ Survey Builder
 
 #create-survey h2 {
 	font-size: 2em;
+	letter-spacing: 2px;
+	color: #212121;
+	font-family: 'Raleway';
 }
 
 .survey-builder {
@@ -169,3 +171,31 @@ Survey Builder
 	width: 60%;
 }
 
+.question-create-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.question-type-selector {
+	margin: 5px;
+}
+
+.del-question-builder {
+	align-self: center;
+	margin-left: 10px;
+	float: right;
+}
+
+#add-question-builder {
+	display: block;
+	margin: 10px auto;
+}
+
+#submit-question-builder {
+	display: block;
+	margin: 0 auto;
+}
+
+.go-back {
+	margin: 10px auto;
+}

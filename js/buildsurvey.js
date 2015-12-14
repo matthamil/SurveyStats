@@ -88,6 +88,8 @@ var app = {
     init: function(){
         this.questionNum = 1;
         this.$fakeTakeSurvey();
+        this.$createSurvey();
+        this.$onClickAddNewQ();
     },
     $appendQuestionNum: function(){
         $("#survey-body").append("<div class='question-header'>" + this.questionNum + ".</div>").bind(app);
@@ -127,31 +129,43 @@ var app = {
         $("#take-survey").click(function(){
             //Removes the Main Menu
             $("#main-menu").remove();
-            //Appends "Fetching"
-            $("#survey-body").append("<p id='fetching' style='text-align:center'>Fetching survey...</p>");
-            //Artificial delay to simulate querying the server
-            setTimeout(function() {
-                $("#fetching").remove();
-                this.printSurveytoDOM(Survey);
-            }.bind(app), 1000);
+            app.$addGoBack();
+            app.printSurveytoDOM(Survey);
         });
+    },
+    $addGoBack: function() {
+        $("#survey-body").append("<button class='go-back'>Back</button>");
+    },
+    $createSurvey: function(){
+        $("#start-survey").click(function(){
+            $("#main-menu").remove();
+            app.$addGoBack();
+            $("#survey-body").append("<div id='create-survey'>");
+            $("#create-survey").append("<h2>Survey Builder</h2>");
+            $("#create-survey").append("<form class='survey-builder'>");
+            app.$addNewQuestionBuilder();
+            $("#create-survey").append("<button id='add-question-builder'>Add Question</button>" +
+                "<button id='submit-question-builder'>Submit</button>" +
+                "</div><!--Create Survey-->");
+        });
+        this.$onClickAddNewQ();
+    },
+    createdQCounter: 1,
+    $addNewQuestionBuilder: function(){
+        $(".survey-builder").append("<div class='question-create-wrapper'>" +
+            "<input class='question-create-textinput' type='text' name='q' placeholder='Type a question here.'>" +
+            "<label class='question-type-selector'><input type='radio' name='q1' value='1'>Likert</label>" +
+            "<label class='question-type-selector'><input type='radio' name='q1' value='2'>Yes/No</label>" +
+            "<button class='del-question-builder'>Delete</button></div></form>");
+        this.createdQCounter++;
+    },
+    $onClickAddNewQ: function(){
+        $("#add-question-builder").click(app.$addNewQuestionBuilder());
     }
-};
-
-var $createSurvey = function(){
-    $("#start-survey").click(function(){
-       $mainmenu.remove();
-    });
 };
 
 var $goBack = function() {
     $("#go-back").click(function(){
 
     });
-};
-
-var $mainMenuOptions = function(){
-    $createSurvey();
-    $fakeTakeSurvey();
-    $goBack();
 };
