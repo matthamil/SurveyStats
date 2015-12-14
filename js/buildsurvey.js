@@ -96,10 +96,10 @@ var app = {
         this.$createSurvey();
     },
     $appendQuestionNum: function(){
-        $("#survey-body").append("<div class='question-header'>" + this.questionNum + ".</div>").bind(app);
+        $("#survey-submit").append("<div class='question-header'>" + this.questionNum + ".</div>").bind(app);
     },
     $appendQBody: function(qText, qAnswers){
-        $("#survey-body").append("<div class='question-body'><p>" + qText + "</p>");
+        $("#survey-submit").append("<div class='question-body'><p>" + qText + "</p>");
         this.$appendQAnswers(qAnswers);
     },
     $appendQAnswers: function(questionAnswers){
@@ -126,8 +126,11 @@ var app = {
         this.questionNum++;
     },
     printSurveytoDOM: function(s){
+        $("#survey-body").append("<form id='survey-submit' action='to-be-added'>");
         for (var i = 0; i < s.survey.length; i++)
             this.$appendNextQuestion(s.survey[i].getQuestion(), s.survey[i].getAnswerChoices());
+        $("#survey-body").append("</form>");
+        $("#survey-body").append("<button id='send-data-to-server' action='submit-to-server'>Submit</button>");
     },
     $fakeTakeSurvey: function(){
         $("#take-survey").click(function(){
