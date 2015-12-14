@@ -50,9 +50,9 @@ YesNo.YesNo = function(question) {
 //var likertTest = Object.create(Likert).Likert("USM has a beautiful campus.");
 //var yesNoTest = Object.create(YesNo).YesNo("Do you own a cat?");
 
-var Survey = {
-    survey: [],
-    addQuestions: function(questions) {
+var Survey = function() {
+    this.survey = [];
+    this.addQuestions = function(questions) {
         for (var i = 0; i < questions.length; i++) {
             var text = questions[i][0];
             var type = questions[i][1];
@@ -61,30 +61,33 @@ var Survey = {
             if (type == "Yes/No")
                 this.survey.push(Object.create(YesNo).YesNo(text));
         }
-    },
-    printSurvey: function() {
+    };
+    this.printSurvey = function() {
         for (var i = 0; i < this.survey.length; i++)
             console.log(this.survey[i].printQuestion() + "\n");
-    },
-    printQuestionTypes: function() {
+    };
+    this.printQuestionTypes = function() {
         for (var i = 0; i < this.survey.length; i++)
             console.log("Question " + (i+1) + ": " + this.survey[i].questionType);
-    }
-
+    };
 };
 
 var created_survey = [["USM offers a wide variety of courses.", "Likert"], ["USM makes me feel at home", "Likert"],
     ["I am receiving a quality education at USM", "Likert"], ["USM is a good school", "Likert"],
     ["I am currently enrolled at USM", "Yes/No"]];
 
-Survey.addQuestions(created_survey);
+var test_survey = new Survey;
+
+test_survey.addQuestions(created_survey);
 
 //-----------------
 //DOM Manipulation
 //-----------------
 
 var app = {
-    surveyCache: {},
+    surveyCache: {
+        createdSurvey: new Survey
+    },
     questionNum: null,
     createdQCounter: 1,
     init: function(){
@@ -131,7 +134,7 @@ var app = {
             //Removes the Main Menu
             $("#main-menu").remove();
             app.$addGoBack();
-            app.printSurveytoDOM(Survey);
+            app.printSurveytoDOM(test_survey);
         });
     },
     $addGoBack: function() {
@@ -167,7 +170,7 @@ var app = {
         });
     },
     $submitNewSurvey: function(){
-        this.surveyCache.created = [];
+        this.surveyCache.createdQList = [];
         $("#submit-question-builder").click(function(){
             for (var i = 0; i < app.createdQCounter; i++) {
                 var qText = document.getElementsByName("q" + (i + 1))[0].value;
@@ -181,13 +184,17 @@ var app = {
                         }
                     }
                 };
-                app.surveyCache.created.push([qText, getRadioValue()]);
+                app.surveyCache.createdQList.push([qText, getRadioValue()]);
             }
+            $("#create-survey").remove();
+            app.surveyCache.createdSurvey.addQuestions(app.surveyCache.createdQList);
+            app.printSurveytoDOM(app.surveyCache.createdSurvey);
         });
     },
     $goBack: function(){
         $(".go-back").click(function(){
-            console.log("This works!");
+            //$("#create-survey").remove();
+            console.log("Back button broken.");
         });
     }
 };
