@@ -169,6 +169,7 @@ Survey Builder
 
 .survey-builder input {
 	width: 60%;
+	margin: 5px;
 }
 
 .question-create-wrapper {
@@ -178,11 +179,6 @@ Survey Builder
 
 .question-type-selector {
 	margin: 5px;
-}
-
-.del-question-builder {
-	align-self: center;
-	margin-left: 10px;
 	float: right;
 }
 

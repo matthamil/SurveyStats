@@ -84,12 +84,13 @@ Survey.addQuestions(created_survey);
 //-----------------
 
 var app = {
+    surveyCache: {},
     questionNum: null,
+    createdQCounter: 1,
     init: function(){
         this.questionNum = 1;
         this.$fakeTakeSurvey();
         this.$createSurvey();
-        this.$onClickAddNewQ();
     },
     $appendQuestionNum: function(){
         $("#survey-body").append("<div class='question-header'>" + this.questionNum + ".</div>").bind(app);
@@ -135,6 +136,7 @@ var app = {
     },
     $addGoBack: function() {
         $("#survey-body").append("<button class='go-back'>Back</button>");
+        this.$goBack();
     },
     $createSurvey: function(){
         $("#start-survey").click(function(){
@@ -147,25 +149,45 @@ var app = {
             $("#create-survey").append("<button id='add-question-builder'>Add Question</button>" +
                 "<button id='submit-question-builder'>Submit</button>" +
                 "</div><!--Create Survey-->");
+            app.$onClickAddNewQ();
+            app.$submitNewSurvey();
         });
-        this.$onClickAddNewQ();
     },
-    createdQCounter: 1,
     $addNewQuestionBuilder: function(){
         $(".survey-builder").append("<div class='question-create-wrapper'>" +
-            "<input class='question-create-textinput' type='text' name='q' placeholder='Type a question here.'>" +
-            "<label class='question-type-selector'><input type='radio' name='q1' value='1'>Likert</label>" +
-            "<label class='question-type-selector'><input type='radio' name='q1' value='2'>Yes/No</label>" +
-            "<button class='del-question-builder'>Delete</button></div></form>");
-        this.createdQCounter++;
+            "<input class='question-create-textinput' type='text' name='q"+app.createdQCounter+"' placeholder='Type a question here.'>" +
+            "<label class='question-type-selector'><input type='radio' name='qRB"+app.createdQCounter+"' value='1'>Likert</label>" +
+            "<label class='question-type-selector'><input type='radio' name='qRB"+app.createdQCounter+"' value='2'>Yes/No</label>" +
+            "</div></form>");
     },
     $onClickAddNewQ: function(){
-        $("#add-question-builder").click(app.$addNewQuestionBuilder());
+        $("#add-question-builder").click(function() {
+            app.createdQCounter++;
+            app.$addNewQuestionBuilder();
+        });
+    },
+    $submitNewSurvey: function(){
+        this.surveyCache.created = [];
+        $("#submit-question-builder").click(function(){
+            for (var i = 0; i < app.createdQCounter; i++) {
+                var qText = document.getElementsByName("q" + (i + 1))[0].value;
+                var radios = document.getElementsByName("qRB" + (i + 1));
+                var getRadioValue = function () {
+                    for (var j = 0; j < 2; j++) {
+                        if(radios[j].checked) {
+                            return "Likert";
+                        } else {
+                            return "Yes/No";
+                        }
+                    }
+                };
+                app.surveyCache.created.push([qText, getRadioValue()]);
+            }
+        });
+    },
+    $goBack: function(){
+        $(".go-back").click(function(){
+            console.log("This works!");
+        });
     }
-};
-
-var $goBack = function() {
-    $("#go-back").click(function(){
-
-    });
 };
