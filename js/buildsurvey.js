@@ -138,8 +138,7 @@ var app = {
         });
     },
     $addGoBack: function() {
-        $("#survey-body").append("<button class='go-back'>Back</button>");
-        this.$goBack();
+        $("#survey-body").append("<a class='btn btn-default' href='index.html'>Back</a>");
     },
     $createSurvey: function(){
         $("#start-survey").click(function(){
@@ -191,10 +190,4 @@ var app = {
             app.printSurveytoDOM(app.surveyCache.createdSurvey);
         });
     },
-    $goBack: function(){
-        $(".go-back").click(function(){
-            //$("#create-survey").remove();
-            console.log("Back button broken.");
-        });
-    }
 };
