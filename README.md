@@ -1,17 +1,10 @@
 #SurveyStats
 
-####OOLO Design Pattern
-
-Preview: currently unavailable
-
 Users can create or take an existing survey.
 
-####To do:
+####Project Details
 
-Create a survey
+This is an entirely front-end project. The project was created without the use of a front-end framework; however, there is extensive use of jQuery.
 
-Save a survey to database
-
-Take an existing survey
-
-Save survey results to database
+The project allows a user to interact with a survey-builder tool and create a survey.
+The code does not interact with a database.
